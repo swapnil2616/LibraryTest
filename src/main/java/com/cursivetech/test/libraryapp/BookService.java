@@ -45,12 +45,16 @@ public class BookService {
 	public void sortBooks() {
 		System.out.println("Inside Sort books");
 		Book book;
-		Iterator booksIterator = this.books.iterator();
-		System.out.println("Before Sort books");
-		while(booksIterator.hasNext()) {
-			book = (Book) booksIterator.next();
-			System.out.println(book.getIsbn() + " -- " + book.getTitle() + " -- " + book.getReleaseDate());
-		}
+		Collections.sort(book, new Comparator<Book>() {
+            public int compare(Book first, Book second) {
+                if (first.compareTo(second) == 1) {
+                    return 1;
+                } else if (first.compareTo(second) == -1) {
+                    return -1;
+                }
+                return 0;
+
+            }
 		
 		// Sort Logic
 		
